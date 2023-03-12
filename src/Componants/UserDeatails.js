@@ -1,6 +1,5 @@
-import { Button, Form, Input, Modal } from "antd";
-import { Footer } from "antd/es/layout/layout";
-import React, { useEffect, useState } from "react";
+import { Form, Input, Modal } from "antd";
+import React from "react";
 
 const UserDeatails = ({
   handleCancel,
@@ -11,17 +10,14 @@ const UserDeatails = ({
   setData,
   data,
 }) => {
-    const [details,setDetails] = useState({})
-  useEffect(() => {
-    setDetails(data)
-  },[data])
-  const { name, email, phone, website } = details;
+  const { name, email, phone, website } = data;
   return (
     <Modal
       title="Basic Modal"
       open={isModalOpen}
       onOk={handleOk}
       onCancel={handleCancel}
+      key={data.id}
     >
       <Form
         name="basic"
@@ -29,9 +25,6 @@ const UserDeatails = ({
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
         initialValues={{ name, email, phone, website }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
       >
         <Form.Item
           label="Name"
@@ -45,21 +38,27 @@ const UserDeatails = ({
           name="email"
           rules={[{ required: true, message: "This field is required" }]}
         >
-          <Input onChange={(e) => setData({ ...data, email: e.target.value })} />
+          <Input
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+          />
         </Form.Item>
         <Form.Item
           label="Phone"
           name="phone"
           rules={[{ required: true, message: "This field is required" }]}
         >
-          <Input onChange={(e) => setData({ ...data, phone: e.target.value })} />
+          <Input
+            onChange={(e) => setData({ ...data, phone: e.target.value })}
+          />
         </Form.Item>
         <Form.Item
           label="Website"
           name="website"
           rules={[{ required: true, message: "This field is required" }]}
         >
-          <Input onChange={(e) => setData({ ...data, website: e.target.value })} />
+          <Input
+            onChange={(e) => setData({ ...data, website: e.target.value })}
+          />
         </Form.Item>
       </Form>
     </Modal>
