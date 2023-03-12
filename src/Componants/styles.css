@@ -1,0 +1,9 @@
+.m-4{
+  margin: 16px;
+}
+.cardHeader{
+  background-color: #f5f5f5;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
